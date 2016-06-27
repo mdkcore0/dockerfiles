@@ -4,7 +4,7 @@ A place for all my docker files
 
 what is here
 ------------
-TBD
+* **slack-dev**: A dockerized work environment (Slack64 14.2).
 
 MOAR
 ----

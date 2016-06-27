@@ -1,0 +1,23 @@
+#!/bin/bash
+
+CMD=$1
+
+if [ x$CMD = x ]
+then
+    echo "FAIL"
+    exit
+    # should run default action (activate?)
+fi
+
+if [ $CMD = run ]
+then
+    echo "RUN"
+    docker run -di -v /Volumes/home/rodrigo/.docker_shared/docker:/home/docker --name slack_docker slack
+elif [ $CMD = activate ]
+then
+    # we should run if not running yet
+    echo "ACTIVATE"
+    docker exec -it slack_docker script /dev/null -c 'zsh'
+else
+    echo "fuen"
+fi
