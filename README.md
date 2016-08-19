@@ -4,7 +4,7 @@ A place for all my docker files
 
 what is here
 ------------
-TBD
+* **wine**: Container with wine and winetricks. Contains vglrun.
 
 MOAR
 ----
