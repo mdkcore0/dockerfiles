@@ -17,8 +17,28 @@ RUN ( echo export LANG=en_US.UTF-8; echo export LC_COLLATE=C ) > /etc/profile.d/
 COPY slackpkg/min.template /etc/slackpkg/templates
 
 RUN slackpkg -batch=on -default_answer=yes install-template min
-RUN slackpkg -batch=on -default_answer=yes install zsh tmux htop curl git-2 vim-7.4 tig
+RUN slackpkg -batch=on -default_answer=yes install \
+    zsh \
+    tmux \
+    htop \
+    curl \
+    git-2 \
+    vim-7.4 \
+    python-setuptools \
+    libffi \
+    libunistring \
+    kernel-headers \
+    cmake \
+    libarchive \
+    libxml2 \
+    nettle \
+    lzo \
+    gcc-g++
+
 # TODO add my own repo to install things
+#   tig
+#
+# llvm?
 
 RUN useradd docker -u 501 -s /bin/zsh --no-create-home
 RUN echo '%docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers

@@ -8,3 +8,8 @@ git clone --recursive https://github.com/rodrigogolive/dotfiles.git $HOME/GIT/do
 
 git clone --recursive https://github.com/rodrigogolive/dotbins.git $HOME/GIT/dotbins
 # link things
+
+
+# TODO my env
+# git-flow-completion
+# dircolors-solarized

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CMD=$1
 
@@ -12,12 +12,29 @@ fi
 if [ $CMD = run ]
 then
     echo "RUN"
-    docker run -di -v /Volumes/home/rodrigo/.docker_shared/docker:/home/docker --name slack_docker slack
+
+    docker run \
+        -di \
+        -e UID=$UID \
+        -u docker \
+        -v $HOME/.docker_shared/docker:/home/docker \
+        -v $HOME/.gitconfig:/home/docker/.gitconfig \
+        -v $HOME/.ssh:/home/docker/.ssh \
+        -h slack-docker \
+        --name slack_docker \
+        slack
 elif [ $CMD = activate ]
 then
     # we should run if not running yet
     echo "ACTIVATE"
-    docker exec -it slack_docker script /dev/null -c 'zsh'
+
+    docker exec -ti slack_docker script /dev/null -c 'zsh'
+elif [ $CMD = stop ]
+then
+    # we should run if not running yet
+    echo "STOP"
+
+    docker stop slack_docker
 else
     echo "fuen"
 fi
