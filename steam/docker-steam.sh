@@ -5,20 +5,27 @@
 #xhost +si:localuser:$(whoami) >/dev/null
 xhost +
 docker run \
-    --privileged \
     --rm \
+    --privileged \
     -ti \
+    --net=host \
+    -P \
     -v /dev/dri:/dev/dri \
     -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
     -v /dev/shm:/dev/shm \
     -e DISPLAY=${DISPLAY} \
     -v /etc/localtime:/etc/localtime:ro \
     -v /var/lib/dbus/machine-id:/etc/machine-id \
-    -v /tmp/pulse-twodQYLEAYXa/native:/tmp/pulse \
+    -v /tmp/pulse-PKdhtXMmr18n/native:/tmp/pulse \
     -e PULSE_SERVER=unix:/tmp/pulse \
     -v $HOME/.steam:/home/steam \
     --name steam \
-    tianon/steam /bin/bash -c 'sudo /etc/init.d/dbus start && steam'
+    --group-add=input \
+    --group-add=plugdev \
+    -v /dev/input:/dev/input \
+    tianon/steam /bin/bash -c 'sudo /etc/init.d/dbus start; steam'
+    #tianon/steam /bin/bash -c 'sudo /etc/init.d/dbus start && steam'
+    #tianon/steam /bin/bash
 
     #tianon/steam /bin/bash
     #sassmann/ubuntu-steam
