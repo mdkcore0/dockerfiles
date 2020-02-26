@@ -1,0 +1,18 @@
+# depends on mdkcore0/openvino:2020.1
+FROM openvino:2020.1
+
+LABEL maintainer "Rodrigo Oliveira <mdkcore@qtrnn.io>"
+
+USER openvino
+ENV OPENVINO_INSTALL_DIR /opt/intel/openvino
+
+# install OpenCV (python bindings)
+RUN pip3 install --user opencv-python
+
+# final touches
+RUN echo "source $OPENVINO_INSTALL_DIR/bin/setupvars.sh" >> /home/openvino/.bashrc
+RUN echo "set -o vi" >> /home/openvino/.bashrc
+
+# here we go!
+WORKDIR /opt/src
+#CMD ["/bin/bash"]
