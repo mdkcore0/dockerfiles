@@ -46,6 +46,25 @@ This folder contains an OpenVINO installation (based on the [official documentat
 ### Example:
 ![](./images/openvino-opencv.png)
 
+### Pulling the image from github:
+I've uploaded the **openvino-opencv** image to this repository as a package; this is my first time doing so and I thought anyone could download the image easily, but it's not so straightforward: you need to login to *GitHub Packages* in order to be able to pull the image :/
+
+I didn't like this approach, hope they change it in the future... but if you still interested on doing so, do the follow:
+
+- authenticate to [GitHub Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages#authenticating-to-github-packages)
+- pull the image:
+    ```
+    $ docker pull docker.pkg.github.com/mdkcore0/dockerfiles/openvino-opencv:latest
+    ```
+- and run:
+    ```
+    $ docker run --rm --user "$UID:$(id -g)" -it -v $PWD:/opt/src docker.pkg.github.com/mdkcore0/dockerfiles/openvino-opencv
+    ```
+    or using the *run-opencv.sh* script:
+    ```
+    $ IMAGE=docker.pkg.github.com/mdkcore0/dockerfiles/openvino-opencv ./run-opencv.sh
+    ```
+
 ## Notes:
 Will update this dockerfile according my use, so stay tuned ;)
 
