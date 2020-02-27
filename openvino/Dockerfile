@@ -5,6 +5,7 @@ FROM ubuntu:18.04
 USER root
 WORKDIR /
 RUN useradd -ms /bin/bash openvino && \
+        echo "openvino:openvino" | chpasswd && adduser openvino sudo && \
         chown openvino -R /home/openvino
 
 ARG DEPENDENCIES="autoconf \
@@ -20,6 +21,7 @@ ARG DEPENDENCIES="autoconf \
                   libgtk-3-0 \
                   libtool \
                   python3-pip \
+                  sudo \
                   udev \
                   unzip"
 

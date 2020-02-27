@@ -20,7 +20,7 @@ This folder contains an OpenVINO installation (based on the [official documentat
     ```
     $ ./run.sh
     ```
-    This will put you on the container command line, inside OpenVINO's installation directory.
+    This will put you on the container command line, inside OpenVINO's installation directory, as root.
 
 - openvino-opencv:
     ```
@@ -38,6 +38,10 @@ This folder contains an OpenVINO installation (based on the [official documentat
     host $ openvino
     container:/opt/src $
     ```
+
+    **NOTE**: This container runs using the `openvino` user, that maps to your actual user on your host machine.
+
+    **NOTE2**: As "normal" user you can not perform `root` operations, but can use `sudo` and install any package in need as the `root` user (password: **openvino**), but keep on mind that any system modification (i.e., any modification outside `/opt/src`) will be lost once exiting the container, as they are disposable (there are ways on keep a container running, but it is out of scope here :grin:).
 
 ### Example:
 ![](./images/openvino-opencv.png)

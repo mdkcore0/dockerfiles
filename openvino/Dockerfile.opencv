@@ -15,4 +15,3 @@ RUN echo "set -o vi" >> /home/openvino/.bashrc
 
 # here we go!
 WORKDIR /opt/src
-#CMD ["/bin/bash"]
