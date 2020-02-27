@@ -3,6 +3,10 @@ FROM openvino:2020.1
 
 LABEL maintainer "Rodrigo Oliveira <mdkcore@qtrnn.io>"
 
+RUN apt-get update && \
+        apt-get install -y --no-install-recommends python3.6-dev && \
+        rm -rf /var/lib/apt/lists/*
+
 USER openvino
 ENV OPENVINO_INSTALL_DIR /opt/intel/openvino
 
