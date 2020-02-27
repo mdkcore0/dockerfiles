@@ -39,6 +39,9 @@ This folder contains an OpenVINO installation (based on the [official documentat
     container:/opt/src $
     ```
 
+### Example:
+![](./images/openvino-opencv.png)
+
 ## Notes:
 Will update this dockerfile according my use, so stay tuned ;)
 
