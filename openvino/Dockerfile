@@ -36,7 +36,6 @@ RUN curl -LOJ "${DOWNLOAD_LINK}" && \
         tar -xzf ./*.tgz && \
         cd l_openvino_toolkit* && \
         sed -i 's/decline/accept/g' silent.cfg && \
-        echo "set COMPONENTS=intel-openvino-ie-rt-cpu__x86_64" >> silent.cfg && \
         ./install.sh -s silent.cfg && \
         rm -rf /tmp/*
 
