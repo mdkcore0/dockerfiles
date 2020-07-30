@@ -1,0 +1,17 @@
+#!/bin/sh
+
+VERSION=${VERSION:-latest}
+IMAGE=node:$VERSION
+
+(
+    docker run \
+        -it \
+        --rm \
+        --net=host \
+        -P \
+        --name node \
+        -v "$PWD":/usr/src \
+        -w /usr/src \
+        --user "$(id -u):$(id -g)" \
+        "$IMAGE" "$@"
+)
